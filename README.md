@@ -4,6 +4,7 @@ This is a simple demo project for showing [oxiles-event-bridge](https://github.c
 In this example, Oxiles listens to a HCS topic and broadcast the message to an HTTP endpoint.
 
 ##Instructions
+
 * Install dependencies with ```npm install```
 * Set your Hedera Hashgraph operator ID and private key in the ```.env``` file. If you already have a topic you can use to listen to, set it also in the ``.env`` file.
 * In case you want to create a new topic, execute ```node hcs-create-topic.js``` and set it in the ```.env``` file
