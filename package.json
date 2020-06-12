@@ -1,0 +1,22 @@
+{
+  "name": "oxiles-event-bridge-demo",
+  "version": "1.0.0",
+  "description": "Oxiles simple demo project",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oxiles/oxiles-event-bridge-demo.git"
+  },
+  "keywords": [
+    "hcs",
+    "hedera",
+    "hashgraph",
+    "oxiles",
+    "eventeum"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/oxiles/oxiles-event-bridge-demo#readme",
+  "dependencies": {
+    "@hashgraph/sdk": "^1.1.12",
+    "dotenv": "^8.2.0"
+  }
+}

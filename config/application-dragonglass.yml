@@ -1,0 +1,33 @@
+server:
+  port: 8060
+
+hashgraph:
+  nodes:
+    - name: dragonglass
+      type: DRAGONGLASS
+      url: ${DRAGONGLASS_API_URL:https://api.dragonglass.me/hedera/api}
+      apiKey: ${DRAGONGLASS_API_KEY}
+
+transactionFilters:
+  - nodeName: dragonglass
+    nodeType: DRAGONGLASS
+    type: "FROM_ADDRESS"
+    transactionIdentifierValue: ${CONTRACT_ADDRESS:0.0.46764}
+
+eventStore:
+  type: DB
+database:
+  type: MONGO
+
+broadcaster:
+  type: HTTP
+  cache:
+    expirationMillis: 6000000
+  multiInstance: false
+  http:
+    transactionEventsUrl: ${HTTP_BROADCASTER_URL}
+
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://mongo:27017/oxiles}

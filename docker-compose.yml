@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  oxiles:
+    image: oxiles/oxiles-event-bridge:latest
+    ports:
+      - "8060:8060"
+    depends_on:
+      - mongo
+    volumes:
+      - ./config:/config
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/oxiles
+      HCS_TOPIC_ID: <YOUR-TOPIC-ID>
+      HTTP_BROADCASTER_URL: <YOUR_BROADCASTER_URL>
+      SPRING_CONFIG_LOCATION: file:/config/application-hcs.yml
+    networks:
+      - default
+
+  mongo:
+    image: mongo:latest
+    hostname: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - $HOME/mongodb/data/db:/data/db
+    networks:
+      - default

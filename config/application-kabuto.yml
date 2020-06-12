@@ -1,0 +1,32 @@
+server:
+  port: 8060
+
+hashgraph:
+  nodes:
+    - name: kabuto
+      type: KABUTO
+      url: ${KABUTO_API_URL:http://api.testnet.kabuto.sh/v1}
+
+transactionFilters:
+  - nodeName: kabuto
+    nodeType: KABUTO
+    type: "FROM_ADDRESS"
+    transactionIdentifierValue: ${CONTRACT_ADDRESS}
+
+eventStore:
+  type: DB
+database:
+  type: MONGO
+
+broadcaster:
+  type: HTTP
+  cache:
+    expirationMillis: 6000000
+  multiInstance: false
+  http:
+    transactionEventsUrl: ${HTTP_BROADCASTER_URL}
+
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://mongo:27017/oxiles}

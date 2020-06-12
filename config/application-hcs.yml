@@ -1,0 +1,32 @@
+server:
+  port: 8060
+
+hashgraph:
+  nodes:
+    - name: hcs
+      type: MIRROR
+      url: ${HCS_MIRROR_NODE:hcs.testnet.mirrornode.hedera.com:5600}
+
+transactionFilters:
+  - nodeName: hcs
+    nodeType: MIRROR
+    type: "TOPIC"
+    transactionIdentifierValue: ${HCS_TOPIC_ID}
+
+eventStore:
+  type: DB
+database:
+  type: MONGO
+
+broadcaster:
+  type: HTTP
+  cache:
+    expirationMillis: 6000000
+  multiInstance: false
+  http:
+    transactionEventsUrl: ${HTTP_BROADCASTER_URL}
+
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://127.0.0.1:27017/oxiles}
